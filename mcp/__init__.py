@@ -1,13 +1,8 @@
 """
-Claude Desktop MCP (Model Context Protocol) Server
+Claude Desktop Message Control Protocol (MCP) Integration
 
-This package provides a Model Context Protocol (MCP) server implementation 
-that allows Claude Desktop to interact with the CUA (Computer Using Agent) functionality.
+This package provides a bridge between the OpenAI CUA sample application
+and Claude Desktop, enabling browser control and task automation.
 """
 
-# Required imports
-from mcp.server import Server
 from mcp.bridge import CUABridge
-
-# Version
-__version__ = "0.1.0"
