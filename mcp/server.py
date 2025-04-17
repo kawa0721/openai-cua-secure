@@ -30,6 +30,10 @@ import logging
 from typing import Dict, List, Optional, Any, Tuple, Union, Literal
 from pathlib import Path
 
+# Load environment variables
+from dotenv import load_dotenv
+load_dotenv()
+
 # Import MCP SDK
 try:
     from mcp.server import Server, resource, tool, schema
@@ -798,6 +802,13 @@ def main():
     config["save_console"] = args.save_console.lower() == "true"
     config["console_log_path"] = args.console_log_path
     config["screenshot_path"] = args.screenshot_path
+    
+    # Check for required environment variables
+    openai_api_key = os.getenv("OPENAI_API_KEY")
+    if not openai_api_key:
+        print("ERROR: OPENAI_API_KEY environment variable is not set.")
+        print("Please add this to your .env file or set it in your environment.")
+        sys.exit(1)
     
     # Start the server
     print(f"Starting Claude Desktop MCP Server...")
